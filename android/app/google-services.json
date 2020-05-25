@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "520441321182",
+    "firebase_url": "https://codingdevsapp.firebaseio.com",
+    "project_id": "codingdevsapp",
+    "storage_bucket": "codingdevsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520441321182:android:305fb2e15dd1edea07544f",
+        "android_client_info": {
+          "package_name": "com.codingdevs.pcttechnician"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520441321182-qh8u01pfatsd09gopf7pf8s2qvi45b3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codingdevs.pcttechnician",
+            "certificate_hash": "5ab6845aab2976d81d9e5392a11b1523f0315642"
+          }
+        },
+        {
+          "client_id": "520441321182-5jn7ofub4eqdpni9hpfv12143d39t3s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcVXKqCYUd-JjpQMhcPIZ8f_kjzqcEr3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520441321182-5jn7ofub4eqdpni9hpfv12143d39t3s2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
