@@ -1,10 +1,10 @@
 # PCT HACKATHON
 
 
-This app solves the use case t2.
+This app solves the use case 2.
 
   - Technician is able to login
-  - User details are scanned prom id card
+  - User details are scanned from id card
   - Technician is able to approve or reject
 
 # Credential
