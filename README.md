@@ -50,3 +50,16 @@ Six
 
 Seven
 ![seven](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/7.jpg)
+
+# DB ScreenShots
+Lab
+![lab](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/db/lab.png)
+
+Sessions
+![session](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/db/sessions.png)
+
+Technician
+![technician](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/db/technician.png)
+
+User
+![User](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/db/user.png)
