@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 navigatorKey: navigatorKey,
                 theme: ThemeData(
-                  brightness: Brightness.light,
+                  brightness: Brightness.dark,
                   primaryColor: Colors.black,
                   accentColor: Colors.red,
                 ),
