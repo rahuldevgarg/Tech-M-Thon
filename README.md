@@ -35,25 +35,25 @@ Main Admin wil also genera qr codes for id card
 
 # ScreenShots
 One
-![one](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/1.jpg =360x800)
+![one](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/1.jpg |=360x800)
 
 Two
-![two](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/2.jpg =360x800)
+![two](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/2.jpg |=360x800)
 
 Three
-![three](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/3.jpg =360x800)
+![three](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/3.jpg |=360x800)
 
 Four
-![four](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/4.jpg =360x800)
+![four](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/4.jpg |=360x800)
 
 Five
-![five](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/5.jpg =360x800)
+![five](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/5.jpg |=360x800)
 
 Six
-![six](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/6.jpg =360x800)
+![six](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/6.jpg |=360x800)
 
 Seven
-![seven](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/7.jpg =360x800)
+![seven](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/Screenshots/7.jpg |=360x800)
 
 # DB ScreenShots
 Lab
