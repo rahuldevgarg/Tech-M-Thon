@@ -1,17 +1,11 @@
-import 'package:camera/camera.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:pcttechnician/Adapters/Lab.dart';
 import 'package:pcttechnician/Adapters/ScannedUser.dart';
-import 'package:pcttechnician/Adapters/Session.dart';
-import 'package:pcttechnician/Adapters/Technician.dart';
 import 'package:pcttechnician/Adapters/User.dart';
 import 'package:pcttechnician/Adapters/globals.dart';
-import 'package:pcttechnician/Providers/TechnicianProvider.dart';
 import 'package:pcttechnician/Providers/UserProvider.dart';
 import 'package:pcttechnician/Screens/MyNavigation.dart';
 import 'package:pcttechnician/database/FirebaseDirectory.dart';

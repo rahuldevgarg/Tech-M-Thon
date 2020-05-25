@@ -7,13 +7,11 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pcttechnician/Adapters/globals.dart';
-import 'package:pcttechnician/Fonts/RDGFontsAndIcons.dart';
 
 import 'package:pcttechnician/Providers/TechnicianProvider.dart';
 import 'package:pcttechnician/database/FirebaseDirectory.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 import '../main.dart';
 import 'package:pcttechnician/Screens/MyNavigation.dart';
 

@@ -4,9 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pcttechnician/Adapters/Lab.dart';
 import 'package:pcttechnician/Adapters/Session.dart';
 import 'package:pcttechnician/Adapters/Technician.dart';
-import 'package:pcttechnician/Adapters/User.dart';
 import 'package:pcttechnician/Adapters/globals.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 class FirebaseDirectory {

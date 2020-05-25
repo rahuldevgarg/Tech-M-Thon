@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:pcttechnician/Adapters/Technician.dart';
 import 'package:pcttechnician/Providers/TechnicianProvider.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 
 import '../main.dart';
 import 'Home.dart';

@@ -1,11 +1,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pcttechnician/Adapters/Technician.dart';
 import 'package:pcttechnician/Adapters/User.dart';
 
-import '../main.dart';
 
 class UserProvider with ChangeNotifier {
   String id;

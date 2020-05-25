@@ -3,7 +3,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pcttechnician/Adapters/User.dart';
 import 'package:pcttechnician/Providers/UserProvider.dart';
 import 'package:provider/provider.dart';
 

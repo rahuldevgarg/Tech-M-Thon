@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,9 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:pcttechnician/Adapters/Lab.dart';
 import 'package:pcttechnician/Adapters/Session.dart';
-import 'package:pcttechnician/Adapters/User.dart';
 import 'package:pcttechnician/Adapters/globals.dart';
-import 'package:pcttechnician/Screens/Home.dart';
 import 'package:pcttechnician/database/FirebaseDirectory.dart';
 
 import '../main.dart';
