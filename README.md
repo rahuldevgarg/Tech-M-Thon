@@ -13,7 +13,7 @@ This app solves the use case t2.
   - 123456
 
 # Download APK
-[![N|Solid](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/assets/images/logos/techmahindra.png)](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/app-release.apk) # .apk
+[![N|Solid](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/assets/images/logos/techmahindra.png)](https://github.com/rahuldevgarg/Tech-M-Thon/blob/master/app-release.apk).apk
 
 
 # Tech Stack
