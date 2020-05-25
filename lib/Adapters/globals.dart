@@ -6,3 +6,4 @@ import 'User.dart';
 
 Technician signTechnician;
 User scanned;
+bool gettingUser=false;

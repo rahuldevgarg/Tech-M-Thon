@@ -26,11 +26,14 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
   Session currentLabLastSession;
   bool loadingStats;
   int totalSessions = 0;
-  Map<String, int> reasons;
-  Map<String, dynamic> otherLabs;
+  Map<String, int> reasons = Map();
+  Map<String, dynamic> otherLabs= Map();
+  String myreason;
+  int reason = 0;
 
   @override
   void initState() {
+    gettingUser =false;
     setState(() {
       loadingStats = true;
     });
@@ -53,6 +56,7 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
         totalSessions = value.documents.length;
       });
     });
+    try{
     await _firebaseDirectory.firestoreInstance
         .collection('Sessions')
         .where('uid', isEqualTo: scanned.uid)
@@ -64,8 +68,10 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
       Session.Reasons.forEach((reason) {
         int icount = 0;
         value.documents.forEach((element) {
+          print(Session.Reasons[element['reason']]);
           if (Session.Reasons[element['reason']] == reason) icount += 1;
         });
+        if(icount>0)
         rdata[reason] = icount;
       });
 
@@ -75,7 +81,14 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
         currentLabLastSession = Session.fromJson(value.documents.first.data);
       });
 
-    });
+    });}
+    catch(e){
+      setState(() {
+        currentLabSessionCount = 0;
+        reasons = Map();
+        currentLabLastSession = null;
+      });
+    }
     Map<String, int> ldata = new Map<String, int>();
 
 //print(key);
@@ -92,7 +105,9 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
           count+=1;
         });
         print(value+" "+count.toString());
-        ldata[value] = count;
+        if (count>0) {
+          ldata[value] = count;
+        }
      });
 
 
@@ -134,18 +149,18 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
             decoration: BoxDecoration(
                 border: Border.all(color: Theme.of(context).accentColor)),
             padding: EdgeInsets.all(getDeviceHeight(context) * 0.015625),
-            child: currentLabSessionCount > 0
+            child: reasons.length > 0
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      for (int i = 0; i < Session.Reasons.length; i++)
+                      for (int i = 0; i < reasons.length; i++)
                         Row(
                           children: <Widget>[
                             Text(
                               '${i + 1}. ' +
-                                  Session.Reasons[i] +
+                                  reasons.keys.toList()[i] +
                                   ' : ' +
-                                  reasons[Session.Reasons[i]].toString(),
+                                  reasons.values.toList()[i].toString(),
                               style: TextStyle(color: Colors.white),
                             )
                           ],
@@ -165,7 +180,7 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
             decoration: BoxDecoration(
                 border: Border.all(color: Theme.of(context).accentColor)),
             padding: EdgeInsets.all(getDeviceHeight(context) * 0.015625),
-            child: allOtherLabsSessionCount > 0?Column(
+            child: otherLabs.length > 0?Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       for (int i = 0; i < otherLabs.length; i++)
@@ -187,28 +202,15 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
   }
   Widget Allow(BuildContext context){
     String phone =scanned.phone;
-    int reason = 0;
+
     final _FormKey = GlobalKey<FormState>();
     FocusNode focusNode = FocusNode();
     TextEditingController editphone = new TextEditingController();
     TextEditingController duration = new TextEditingController();
-    List _reasons = Session.Reasons;
-
-
-    List<DropdownMenuItem<int>> getDropDownMenuReasonItems() {
-      List<DropdownMenuItem<int>> items = new List();
-      for (String reason in _reasons) {
-        items.add(
-            new DropdownMenuItem(value: Session.Reasons.indexOf(reason), child: new Text(reason)));
-      }
-      return items;
-    }
-    List<DropdownMenuItem<int>> _dropDownMenuReasonItems;
-
-    void changedDropDownItem(int selectedReason) {
+    void changedDropDownItem(String selectedReason) {
       setState(() {
-
-        reason = selectedReason;
+         this.myreason = selectedReason;
+        reason = Session.Reasons.indexOf(selectedReason);
       });
       print(reason);
     }
@@ -226,9 +228,15 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
             Container(
               padding: EdgeInsets.all(16.0),
             ),
-             DropdownButton(
-              value: reason,
-              items: getDropDownMenuReasonItems(),
+             DropdownButton<String>(
+              value: myreason,
+              items: Session.Reasons.map((e) {
+                return DropdownMenuItem<String>(
+                  value: e,
+                  child: Text(e),
+                );
+              }).toList(),
+              hint: new Text("Select Reason"),
               onChanged: changedDropDownItem,
             )
           ]),
@@ -314,12 +322,11 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
                         fontSize: 16.0);
                   }else{
                     Session newSession = Session(uid: scanned.uid,scannedBy: signTechnician.uid,labID: signTechnician.labID,reason: reason,allowedFor: int.parse(duration.text),enterTime: Timestamp.now());
+                    setState(() {
+                      scanned=null;
+                    });
                     _firebaseDirectory.AddSessionForUser(newSession.toJson()).then((value) {
                       print(value.enterTime.toDate());
-                      setState(() {
-                        scanned=null;
-                      });
-                      _firebaseDirectory.AddSessionForUser(newSession.toJson()).whenComplete((){
                         Fluttertoast.showToast(
                             msg: "Record Updated",
                             gravity: ToastGravity.BOTTOM,
@@ -328,14 +335,14 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
                             fontSize: 16.0);
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) => MyNavigation()));
-                      });
+
                     });
 
                   }
                 },
                 child: Container(
-                  height: getDeviceHeight(context)*0.05,
-                  width: getDeviceWidth(context)*0.1,
+                  height: getDeviceHeight(context)*0.1,
+                  width: getDeviceWidth(context)*0.2,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.green)
                   ),
@@ -361,8 +368,8 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
                   print("Rejected");
                 },
                 child: Container(
-                  height: getDeviceHeight(context)*0.05,
-                  width: getDeviceWidth(context)*0.1,
+                  height: getDeviceHeight(context)*0.1,
+                  width: getDeviceWidth(context)*0.2,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.red)
                   ),
@@ -416,8 +423,12 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
     return SingleChildScrollView(
       child: scanned==null?
 
-          Center(
-            child: _loadingDialog(context, "Authorizing..."),
+          Container(
+            height: getDeviceHeight(context)-AppBar().preferredSize.height,
+            width: getDeviceWidth(context),
+            child: Center(
+              child: _loadingDialog(context, "Authorizing..."),
+            ),
           )
 
 
@@ -434,7 +445,7 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
           totalSessions != 0
               ? UserRecords()
               : Container(
-                  height: getDeviceHeight(context) * 0.5,
+                  height: getDeviceHeight(context) * 0.2,
                   width: getDeviceWidth(context),
                   color: Theme.of(context).primaryColor,
                   child: Center(

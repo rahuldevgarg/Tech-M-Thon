@@ -23,7 +23,6 @@ class Home extends StatefulWidget{
 class _HomeState extends State<Home>{
   bool hasCamera;
   User scannedUser;
-  bool gettingUser=false;
   String _scanBarcode = 'Unknown';
   FirebaseDirectory _firebaseDirectory = new FirebaseDirectory();
   startBarcodeScanStream() async {
@@ -89,7 +88,6 @@ class _HomeState extends State<Home>{
             scannedUser =tuser;
             scanned = tuser;
           });
-          gettingUser =false;
           Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>MyNavigation(selected: 1,)));
 
 
@@ -154,7 +152,7 @@ class _HomeState extends State<Home>{
       child: Column(
         children: <Widget>[
           gettingUser?
-              _loadingDialog(context, "Getting User...")
+              Center(child: _loadingDialog(context, "Getting User..."))
               :Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
