@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pcttechnician/Adapters/ScannedUser.dart';
 import 'package:pcttechnician/Adapters/User.dart';
 import 'package:pcttechnician/Adapters/globals.dart';
@@ -66,7 +67,22 @@ class _HomeState extends State<Home>{
 
   }
   User getfromdb(String pctID){
-    ScannedUser scannedData = ScannedUser.fromJson(jsonDecode(pctID));
+    ScannedUser scannedData;
+    try{
+      scannedData = ScannedUser.fromJson(jsonDecode(pctID));
+
+    }catch(e){
+      Fluttertoast.showToast(
+          msg: "Bad Id",
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.black,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      setState(() {
+        gettingUser =false;
+      });
+    }
+
     Provider.of<UserProvider>(context, listen: false)
         .getUserFromUid(scannedData.pctID).then((tuser) async {
           setState(() {

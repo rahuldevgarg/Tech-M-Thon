@@ -203,12 +203,14 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
       }
       return items;
     }
-    List<DropdownMenuItem<int>> _dropDownMenuReasonItems=getDropDownMenuReasonItems() ;
+    List<DropdownMenuItem<int>> _dropDownMenuReasonItems;
 
     void changedDropDownItem(int selectedReason) {
       setState(() {
+
         reason = selectedReason;
       });
+      print(reason);
     }
     return Container(
       height: getDeviceHeight(context)*0.4,
@@ -220,13 +222,13 @@ class _VolunteerRecordsState extends State<VolunteerRecords> {
           Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-            new Text("Reason: "),
-            new Container(
-              padding: new EdgeInsets.all(16.0),
+            Text("Reason: "),
+            Container(
+              padding: EdgeInsets.all(16.0),
             ),
-            new DropdownButton(
+             DropdownButton(
               value: reason,
-              items: _dropDownMenuReasonItems,
+              items: getDropDownMenuReasonItems(),
               onChanged: changedDropDownItem,
             )
           ]),
